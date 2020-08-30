@@ -33,7 +33,7 @@ namespace TicTacToe.Classes
 
 			//TODO: Complete this method and utilize the rest of the class structure to play the game.
 
-            /*
+			/*
              * Complete this method by constructing the logic for the actual playing of Tic Tac Toe. 
              * 
              * A few things to get you started:
@@ -47,6 +47,34 @@ namespace TicTacToe.Classes
 
             Use any and all pre-existing methods in this program to help construct the method logic. 
              */
+			bool winner = CheckForWinner(Board);
+			Player currentPlayer = NextPlayer();
+			int turns = 0;
+			while (winner == false && turns != 10)
+            {
+				Board.DisplayBoard();
+				currentPlayer.TakeTurn(Board);
+				winner = CheckForWinner(Board);
+				SwitchPlayer();
+				currentPlayer = NextPlayer();
+				turns++;
+				if (turns == 9)
+                {
+					Board.DisplayBoard();
+					currentPlayer.Name = "Draw";
+					turns++;
+					
+                }
+            }
+			//if (currentPlayer.Name == "Draw")
+            //{
+				//Console.WriteLine("Draw");
+				//return currentPlayer;
+            //}
+			//else
+			//Console.WriteLine($"Winner {currentPlayer.Name}");
+			return currentPlayer;
+			
 		}
 
 
@@ -59,14 +87,15 @@ namespace TicTacToe.Classes
 		{
 			int[][] winners = new int[][]
 			{
+				//Row Wins
 				new[] {1,2,3},
 				new[] {4,5,6},
 				new[] {7,8,9},
-
+				//Col Wins
 				new[] {1,4,7},
 				new[] {2,5,8},
 				new[] {3,6,9},
-
+				//Diag Wins
 				new[] {1,5,9},
 				new[] {3,5,7}
 			};
@@ -84,7 +113,10 @@ namespace TicTacToe.Classes
 
 				// TODO:  Determine a winner has been reached. 
 				// return true if a winner has been reached. 
-			
+				if ($"{a}{b}{c}" == "XXX" || $"{a}{b}{c}" == "OOO")
+                {
+					return true;
+                }
 			}
 
 			return false;

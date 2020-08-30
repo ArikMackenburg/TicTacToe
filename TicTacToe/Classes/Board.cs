@@ -19,8 +19,20 @@ namespace TicTacToe.Classes
 
 		public void DisplayBoard()
 		{
-			
+
 			//TODO: Output the board to the console
+			
+
+			for (int i = 0; i<3; i++)
+            {
+				string line = "";
+				for (int j = 0; j < 3; j++)
+				{
+					line = $"{line} | {GameBoard[i,j]}";
+				}
+				Console.WriteLine($"{line} |");
+			}
+			
 		
 		}
 	}
