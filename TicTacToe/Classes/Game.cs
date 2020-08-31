@@ -58,7 +58,7 @@ namespace TicTacToe.Classes
 				SwitchPlayer();
 				currentPlayer = NextPlayer();
 				turns++;
-				if (turns == 9)
+				if (turns == 10)
                 {
 					Board.DisplayBoard();
 					currentPlayer.Name = "Draw";
